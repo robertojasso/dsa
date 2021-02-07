@@ -18,7 +18,7 @@ $stack->pop();
 $stack->peek();  
 $stack->pop();  
 ### result
-new stack[2]: Array ( [0] => [1] => )
+new stack[2]: Array ( [0] => [1] => )  
 📭 stack is empty  
 ⤵️ push stack[0] <- holi  
 📚 stack is not empty  
