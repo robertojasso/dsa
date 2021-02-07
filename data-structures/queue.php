@@ -4,14 +4,18 @@ class Queue
 {
     private $queue;
     private $index;
+    private $verbose;
 
-    public function __construct($size = 10)
+    public function __construct($size = 10, $verbose = true)
     {
         $this->index = 0;
+        
         $this->queue = array_fill(0, $size, null);
         foreach ($this->queue as $k => $v) {
             $this->queue[$k] = null;
         }
+
+        $this->verbose = $verbose;
         $this->print('init', $size);
     }
 
@@ -84,36 +88,39 @@ class Queue
 
     private function print($type, $i, $e = null)
     {
-        switch ($type) {
-            case 'init':
-                echo "new queue[$i]: ";
-                print_r($this->queue);
-                echo '<br>';
-                break;
-            case 'enqueue':
-                echo "⤵️ enqueue queue[$i] <- $e<br>";
-                break;
-            case 'dequeue':
-                echo "🍾 dequeue queue[$i] -> $e<br>";
-                break;
-            case 'peek':
-                echo "👀 peek: <i>$e</i><br>";
-                break;
-            case 'empty':
-                echo '📭 queue is empty<br>';
-                break;
-            case 'notempty':
-                echo '📚 queue is not empty<br>';
-                break;
-            case 'overflow':
-                echo "💥 queue overflow (<strike>queue[$i] = $e</strike>)<br>";
-                break;
-            case 'underflow':
-                echo "🌵 queue underflow (<strike>queue[$i]</strike>)<br>";
-                break;
-            default:
-                break;
+        if($this->verbose) {
+            switch ($type) {
+                case 'init':
+                    echo "new queue[$i]: ";
+                    print_r($this->queue);
+                    echo '<br>';
+                    break;
+                case 'enqueue':
+                    echo "⤵️ enqueue queue[$i] <- $e<br>";
+                    break;
+                case 'dequeue':
+                    echo "🍾 dequeue queue[$i] -> $e<br>";
+                    break;
+                case 'peek':
+                    echo "👀 peek: <i>$e</i><br>";
+                    break;
+                case 'empty':
+                    echo '📭 queue is empty<br>';
+                    break;
+                case 'notempty':
+                    echo '📚 queue is not empty<br>';
+                    break;
+                case 'overflow':
+                    echo "💥 queue overflow (<strike>queue[$i] = $e</strike>)<br>";
+                    break;
+                case 'underflow':
+                    echo "🌵 queue underflow (<strike>queue[$i]</strike>)<br>";
+                    break;
+                default:
+                    break;
+            }
         }
+        return;
     }
 }
 

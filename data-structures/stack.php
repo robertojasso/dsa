@@ -3,14 +3,18 @@ class Stack
 {
     private $stack;
     private $index;
+    private $verbose;
 
-    public function __construct($size = 10)
+    public function __construct($size = 10, $verbose = true)
     {
         $this->index = -1;
+        
         $this->stack = array_fill(0, $size, null);
         foreach($this->stack as $k => $v) {
             $this->stack[$k] = null;
         }
+
+        $this->verbose = $verbose;
         $this->print('init', $size);
     }
 
@@ -77,36 +81,39 @@ class Stack
 
     private function print($type, $i, $e = null)
     {
-        switch ($type) {
-            case 'init':
-                echo "new stack[$i]: ";
-                print_r($this->stack);
-                echo '<br>';
-                break;
-            case 'push':
-                echo "⤵️ push stack[$i] <- $e<br>";
-                break;
-            case 'pop':
-                echo "🍾 pop stack[$i] -> $e<br>";
-                break;
-            case 'peek':
-                echo "👀 peek: <i>$e</i><br>";
-                break;
-            case 'empty':
-                echo '📭 stack is empty<br>';
-                break;
-            case 'notempty':
-                echo '📚 stack is not empty<br>';
-                break;
-            case 'overflow':
-                echo "💥 stack overflow (<strike>stack[$i] = $e</strike>)<br>";
-                break;
-            case 'underflow':
-                echo "🌵 stack underflow (<strike>stack[$i]</strike>)<br>";
-                break;
-            default:
-                break;
+        if($this->verbose) {
+            switch ($type) {
+                case 'init':
+                    echo "new stack[$i]: ";
+                    print_r($this->stack);
+                    echo '<br>';
+                    break;
+                case 'push':
+                    echo "⤵️ push stack[$i] <- $e<br>";
+                    break;
+                case 'pop':
+                    echo "🍾 pop stack[$i] -> $e<br>";
+                    break;
+                case 'peek':
+                    echo "👀 peek: <i>$e</i><br>";
+                    break;
+                case 'empty':
+                    echo '📭 stack is empty<br>';
+                    break;
+                case 'notempty':
+                    echo '📚 stack is not empty<br>';
+                    break;
+                case 'overflow':
+                    echo "💥 stack overflow (<strike>stack[$i] = $e</strike>)<br>";
+                    break;
+                case 'underflow':
+                    echo "🌵 stack underflow (<strike>stack[$i]</strike>)<br>";
+                    break;
+                default:
+                    break;
+            }
         }
+        return;
     }
 }
 
