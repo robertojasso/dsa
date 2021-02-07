@@ -11,9 +11,7 @@ class Stack
         foreach($this->stack as $k => $v) {
             $this->stack[$k] = null;
         }
-        echo "new stack[$size]: ";
-        print_r($this->stack);
-        echo '<br>';
+        $this->print('init', $size);
     }
 
     public function push($element)
@@ -80,6 +78,11 @@ class Stack
     private function print($type, $i, $e = null)
     {
         switch ($type) {
+            case 'init':
+                echo "new stack[$i]: ";
+                print_r($this->stack);
+                echo '<br>';
+                break;
             case 'push':
                 echo "⤵️ push stack[$i] <- $e<br>";
                 break;

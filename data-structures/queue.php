@@ -12,9 +12,7 @@ class Queue
         foreach ($this->queue as $k => $v) {
             $this->queue[$k] = null;
         }
-        echo "new queue[$size]: ";
-        print_r($this->queue);
-        echo '<br>';
+        $this->print('init', $size);
     }
 
     public function enqueue($element)
@@ -87,6 +85,11 @@ class Queue
     private function print($type, $i, $e = null)
     {
         switch ($type) {
+            case 'init':
+                echo "new queue[$i]: ";
+                print_r($this->queue);
+                echo '<br>';
+                break;
             case 'enqueue':
                 echo "⤵️ enqueue queue[$i] <- $e<br>";
                 break;
