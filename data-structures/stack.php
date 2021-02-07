@@ -1,4 +1,7 @@
 <?php
+
+namespace dsa;
+
 class Stack
 {
     private $stack;
@@ -116,19 +119,3 @@ class Stack
         return;
     }
 }
-
-$stack = new Stack(2);
-$stack->isEmpty();
-$stack->push('holi');
-$stack->isEmpty();
-$stack->peek();
-$stack->push('holo');
-$stack->push('hola');
-$stack->peek();
-$stack->pop();
-$stack->isEmpty();
-$stack->pop();
-$stack->isEmpty();
-$stack->pop();
-$stack->peek();
-$stack->pop();

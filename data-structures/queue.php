@@ -1,5 +1,7 @@
 <?php
 
+namespace dsa;
+
 class Queue
 {
     private $queue;
@@ -123,19 +125,3 @@ class Queue
         return;
     }
 }
-
-$queue = new Queue(3);
-$queue->isEmpty();
-$queue->enqueue('equis');
-$queue->peek();
-$queue->enqueue('yolo');
-$queue->enqueue('swag');
-$queue->enqueue('badabum');
-$queue->peek();
-$queue->dequeue();
-$queue->peek();
-$queue->isEmpty();
-$queue->dequeue();
-$queue->dequeue();
-$queue->dequeue();
-$queue->peek();
