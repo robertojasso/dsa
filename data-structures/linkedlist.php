@@ -162,12 +162,16 @@ class LinkedList
 
     public function reverse()
     {
+        // first node will become last, save it to link to tail
         $firstNode = $this->head->next;
+        // do not reverse if empty or single node
         if($this->isEmpty() or $this->isLastNode($firstNode)) {
             return false;
         }
+        // last node will become first, save it to link to head
         $lastNode = $this->getLastNode();
         $temp = $lastNode;
+        // point link to previous node for each node
         while($temp != $this->head) {
             $temp->next = $this->getPreviousNode($temp);
             $temp = $temp->next;
